@@ -2,10 +2,12 @@
 
 public class Option {
     private string text;
-    private Action<Player> action;
+    private Action action;
     private Quest next;
 
-    public Option(string text, Action<Player> action, Quest quest = null) {
+    public Option(string text, Quest quest = null) : this(text, () => { }, quest) { }
+
+    public Option(string text, Action action, Quest quest = null) {
         this.text = text;
         this.action = action;
         this.next = quest;
@@ -15,8 +17,8 @@ public class Option {
         return text;
     }
 
-    public void DoAction(Player player) {
-        action(player);
+    public void DoAction() {
+        action();
     }
 
     public Quest Next() {

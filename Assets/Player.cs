@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player {
     public enum Traits { GoblinSlayer, Trait, MysticalKnowledge, Skullduggery, Observant };
+    private int xp = 0;
+
+    internal void XpUp() {
+        xp++;
+    }
+
     HashSet<string> clues = new HashSet<string>();
     HashSet<Traits> traits = new HashSet<Traits>();
     HashSet<string> states = new HashSet<string>();
@@ -14,6 +21,14 @@ public class Player {
 
     public void Learn(string state) {
         clues.Add(state);
+    }
+
+    public Boolean HasEnoughClues() {
+        return clues.Count >= 5;
+    }
+
+    public Boolean HasOneClueLeft() {
+        return clues.Count >= 4;
     }
 
     public bool Has(Traits trait) {

@@ -28,7 +28,7 @@ public class Main : MonoBehaviour {
     }
 
     private void DoOption(Option o) {
-        o.DoAction(currentPlayer);
+        o.DoAction();
         if (o.Next() != null) {
             SetQuest(o.Next());
         } else {

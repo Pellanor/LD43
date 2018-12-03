@@ -28,10 +28,10 @@ internal class DailyQuestPicker: Quest {
         List<DailyQuestCandidate> available = quests.Where(q => q.IsAvailable()).ToList();
         DailyQuestCandidate lQuest = available[Random.Range(0, available.Count)];
         available.Remove(lQuest);
-        left = new Option(lQuest.QuestText(), (p) => { }, lQuest);
+        left = new Option(lQuest.QuestText(), lQuest);
         DailyQuestCandidate rQuest = available[Random.Range(0, available.Count)];
         available.Remove(rQuest);
-        right = new Option(rQuest.QuestText(), (p) => { }, rQuest);
+        right = new Option(rQuest.QuestText(), rQuest);
     }
 
     public Option Left() {
