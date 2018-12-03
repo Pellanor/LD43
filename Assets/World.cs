@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,7 @@ public class World {
     private static List<string> destroyedDwellings = new List<string>();
     private static int goblinsSlain = 0;
 
-    internal static int GoblinsSlain() {
-        return goblinsSlain;
-    }
-
     private static HashSet<string> states = new HashSet<string>();
-    public static Random rnd = new Random();
     public static Player player = new Player();
 	
 	public static bool IsState(string state) {
@@ -57,6 +53,14 @@ public class World {
     }
 
     public static string GetDestroyedDwelling() {
-        return destroyedDwellings[Random.Range(0,destroyedDwellings.Count)];
+        return destroyedDwellings[UnityEngine.Random.Range(0,destroyedDwellings.Count)];
+    }
+
+    internal static int GoblinsSlain() {
+        return goblinsSlain;
+    }
+
+    internal static void SlayGoblins() {
+        goblinsSlain++;
     }
 }

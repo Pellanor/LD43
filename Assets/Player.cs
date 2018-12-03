@@ -7,10 +7,6 @@ public class Player {
     public enum Traits { GoblinSlayer, Trait, MysticalKnowledge, Skullduggery, Observant };
     private int xp = 0;
 
-    internal void XpUp() {
-        xp++;
-    }
-
     HashSet<string> clues = new HashSet<string>();
     HashSet<Traits> traits = new HashSet<Traits>();
     HashSet<string> states = new HashSet<string>();
@@ -45,5 +41,9 @@ public class Player {
 
     public void GrantProfeciency(string weapon) {
 
+    }
+
+    internal void XpUp() {
+        xp++;
     }
 }

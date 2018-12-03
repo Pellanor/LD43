@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 
 internal class DailyQuestPicker: Quest {
-    private static List<DailyQuestCandidate> quests = new List<DailyQuestCandidate> {
+    private List<DailyQuestCandidate> quests = new List<DailyQuestCandidate> {
         new SearchForCaptive(),
         new GoblinHunting(),
         new FightGoblinCaptain(),

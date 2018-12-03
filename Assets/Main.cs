@@ -38,8 +38,10 @@ public class Main : MonoBehaviour {
 
     void SetQuest(Quest newQuest) {
         currentQuest = newQuest;
-        questText.text = currentQuest.Text();
-        swipeLeft.GetComponentInChildren<Text>().text = currentQuest.Left().Text();
-        swipeRight.GetComponentInChildren<Text>().text = currentQuest.Right().Text();
+        if (questText != null) {
+            questText.text = currentQuest.Text();
+            swipeLeft.GetComponentInChildren<Text>().text = currentQuest.Left().Text();
+            swipeRight.GetComponentInChildren<Text>().text = currentQuest.Right().Text();
+        }
     }
 }
