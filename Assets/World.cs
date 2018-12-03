@@ -10,8 +10,28 @@ public class World {
 
     private static HashSet<string> states = new HashSet<string>();
     public static Player player = new Player();
-	
-	public static bool IsState(string state) {
+
+    private static List<Player> goblinAmbushCorpses = new List<Player>();
+    private static List<Player> goblinCaptainCorpses = new List<Player>();
+    public static int deathCount = 0;
+
+    private static void Dead() {
+        SetState("DEAD");
+        deathCount++;
+        player = new Player();
+    }
+
+    public static void DeadAtGoblinAmbush() {
+        goblinAmbushCorpses.Add(player);
+        Dead();
+    }
+
+    public static void DeadAtGoblinCaptain() {
+        goblinCaptainCorpses.Add(player);
+        Dead();
+    }
+
+    public static bool IsState(string state) {
         return states.Contains(state);
     }
 

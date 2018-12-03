@@ -26,10 +26,24 @@ internal class DailyQuestPicker: Quest {
 
     public DailyQuestPicker() {
         List<DailyQuestCandidate> available = quests.Where(q => q.IsAvailable()).ToList();
-        DailyQuestCandidate lQuest = available[Random.Range(0, available.Count)];
+        List<DailyQuestCandidate> priority = available.Where(q => q.IsPriority()).ToList();
+        DailyQuestCandidate lQuest;
+        if (priority.Count > 0) {
+            lQuest = priority[Random.Range(0, available.Count)];
+            priority.Remove(lQuest);
+        } else {
+            lQuest = available[Random.Range(0, available.Count)];
+        }
         available.Remove(lQuest);
         left = new Option(lQuest.QuestText(), lQuest);
-        DailyQuestCandidate rQuest = available[Random.Range(0, available.Count)];
+
+        DailyQuestCandidate rQuest;
+        if (priority.Count > 0) {
+            rQuest = priority[Random.Range(0, available.Count)];
+            priority.Remove(rQuest);
+        } else {
+            rQuest = available[Random.Range(0, available.Count)];
+        }
         available.Remove(rQuest);
         right = new Option(rQuest.QuestText(), rQuest);
     }

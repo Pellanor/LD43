@@ -4,7 +4,7 @@
     }
 
     public bool IsPriority() {
-        throw new System.NotImplementedException();
+        return true;
     }
 
     public Option Left() {

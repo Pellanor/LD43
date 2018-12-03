@@ -32,9 +32,7 @@ internal class GoblinHunting : DailyQuestCandidate {
     }
 
     private static System.Action Death() {
-        return () => {
-            //todo: how to die
-        };
+        return () => World.DeadAtGoblinAmbush();
     }
     private GoblinScene currentScene;
 
