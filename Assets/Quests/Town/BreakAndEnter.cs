@@ -2,11 +2,11 @@
 
 internal class BreakAndEnter : DailyQuestCandidate {
     public bool IsAvailable() {
-        return World.player.Has(Player.Traits.Skullduggery);
+        return World.player.Has(Player.Traits.SKULLDUGGERY) && !World.player.Knows(Player.Clue.ELDER_STUFF);
     }
 
     private Action Clue() {
-        return () => World.player.Learn("ELDER_STUFF");
+        return () => World.player.Learn(Player.Clue.ELDER_STUFF);
     }
 
     public bool IsPriority() {
@@ -14,7 +14,7 @@ internal class BreakAndEnter : DailyQuestCandidate {
     }
 
     public Option Left() {
-        if (World.player.Has(Player.Traits.MysticalKnowledge)) {
+        if (World.player.Has(Player.Traits.MYSTIC_KNOW)) {
             return new Option("Take some time to study his arcane tomes", Clue(), new StudyElderStuff());
         }
         return new Option("It's a shame you don't understand any of this", Clue());
@@ -28,7 +28,7 @@ internal class BreakAndEnter : DailyQuestCandidate {
         if (World.player.HasOneClueLeft()) {
             return new Option("He must be behind everything. Ambush him!", Clue(), new AmbushElder());
         }
-        return new Option("It's a shame you don't understand any of this", Clue());
+        return new Option("Too much mystic mumbo jumbo", Clue());
     }
 
     public string Text() {

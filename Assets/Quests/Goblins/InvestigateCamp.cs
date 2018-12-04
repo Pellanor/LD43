@@ -1,7 +1,7 @@
 ﻿internal class InvestigateCamp : DailyQuestCandidate {
     public bool IsAvailable() {
-        return World.IsState("CAMP_FOUND")
-            && !World.IsState("CAMP_CLEARED");
+        return World.LocationOnMap(World.Location.GOBLIN_CAMP)
+            && !World.IsState(World.State.CAMP_CLEARED);
     }
 
     public bool IsPriority() {

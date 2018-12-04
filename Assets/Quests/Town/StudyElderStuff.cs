@@ -2,7 +2,7 @@
 
 internal class StudyElderStuff : Quest {
     private Action Clue() {
-        return () => World.player.Learn("ELDER_STUFF_STUDIED");
+        return () => World.player.Learn(Player.Clue.ELDER_STUFF_STUDIED);
     }
 
     public Option Left() {

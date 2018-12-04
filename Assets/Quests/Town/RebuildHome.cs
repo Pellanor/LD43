@@ -28,7 +28,7 @@ internal class RebuildHome : DailyQuestCandidate {
     }
 
     public Option Right() {
-        if (World.player.Has(Player.Traits.MysticalKnowledge)) {
+        if (World.player.Has(Player.Traits.MYSTIC_KNOW)) {
             return new Option("You notice a small arcane rune in the wreckage...", Rebuild(), new ExamineArcaneRune());
         }
         return new Option("Chat the night away with the grateful family", Rebuild());

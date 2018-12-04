@@ -2,7 +2,7 @@
 
 internal class ExamineArcaneRune : Quest {
     private Action Clue() {
-        return () => World.player.Learn("ARCANE_RUNE");
+        return () => World.player.Learn(Player.Clue.ARCANE_RUNE);
     }
 
     public Option Left() {
@@ -10,14 +10,14 @@ internal class ExamineArcaneRune : Quest {
     }
 
     public Option Right() {
-        if (World.player.HasEnoughClues() || (World.player.HasOneClueLeft() && !World.player.Knows("ARCANE_RUNE"))) {
+        if (World.player.HasEnoughClues() || (World.player.HasOneClueLeft() && !World.player.Knows(Player.Clue.ARCANE_RUNE))) {
             return new Option("It must be the elder! Confront him.", Clue(), new ConfrontElder());
         }
         return new Option("Warn the Elder!", Clue(), new WarnElder());
     }
 
     public string Text() {
-        if (World.player.Knows("ARCANE_RUNE")) {
+        if (World.player.Knows(Player.Clue.ARCANE_RUNE)) {
             return "This rune appears to be the same type you found before. Somebody is luring goblins into town.";
         }
         return "The rune was damaged in the destruction, but you're prtty sure it attracted the goblins here! Who could have placed it?";

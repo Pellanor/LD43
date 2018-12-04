@@ -435,6 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questText: {fileID: 604901869}
+  swipeRight: {fileID: 76834783}
+  swipeLeft: {fileID: 1881359373}
 --- !u!4 &237826085
 Transform:
   m_ObjectHideFlags: 0
@@ -751,6 +753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questText: {fileID: 0}
+  swipeRight: {fileID: 0}
+  swipeLeft: {fileID: 0}
 --- !u!1 &1881359371
 GameObject:
   m_ObjectHideFlags: 0

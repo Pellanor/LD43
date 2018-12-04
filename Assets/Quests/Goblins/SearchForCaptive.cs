@@ -1,7 +1,7 @@
 ﻿internal class SearchForCaptive : DailyQuestCandidate {
     public bool IsAvailable() {
-        return World.IsState("CAPTIVE_TAKEN")
-            && !World.IsState("FOUND_CAMP");
+        return World.IsState(World.State.CAPTIVE_TAKEN)
+            && !World.LocationOnMap(World.Location.GOBLIN_CAMP);
     }
 
     public bool IsPriority() {
@@ -9,14 +9,14 @@
     }
 
     public Option Left() {
-        return new Option("Investigate the camp", () => World.SetState("FOUND_CAMP"), new InvestigateCamp());
+        return new Option("Investigate the camp", () => World.AddToMap(World.Location.GOBLIN_CAMP), new InvestigateCamp());
     }
 
     public Option Right() {
-        if (World.player.Has(Player.Traits.GoblinSlayer)) {
-            return new Option("Slay Goblins!!!", () => World.SetState("FOUND_CAMP"), new AttackCamp());
+        if (World.player.Has(Player.Traits.GOBLIN_SLAYER)) {
+            return new Option("Slay Goblins!!!", () => World.AddToMap(World.Location.GOBLIN_CAMP), new AttackCamp());
         }
-        return new Option("Follow the path towards the mountains", () => World.SetState("FOUND_CAMP"), new FindRuins());
+        return new Option("Follow the path towards the mountains", () => World.AddToMap(World.Location.GOBLIN_CAMP), new FindRuins());
     }
 
     public string QuestText() {

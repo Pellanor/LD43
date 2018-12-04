@@ -2,12 +2,12 @@
 
 internal class PathToTheMountains : DailyQuestCandidate {
     public bool IsAvailable() {
-        return World.IsState("RUINS_FOUND")
-            && !World.IsState("MAGIC_LAND_FOUND");
+        return World.LocationOnMap(World.Location.GOBLIN_RUINS)
+            && !World.LocationOnMap(World.Location.MAGIC_LANDS);
     }
 
     private Action Found() {
-        return () => World.SetState("MAGIC_LAND_FOUND");
+        return () => World.AddToMap(World.Location.MAGIC_LANDS);
     }
 
     public bool IsPriority() {
@@ -15,7 +15,7 @@ internal class PathToTheMountains : DailyQuestCandidate {
     }
 
     public Option Left() {
-        return new Option("Coninue to Explore", Found());
+        return new Option("Coninue to Explore", Found(), new ExploreMountains());
     }
 
     public string QuestText() {

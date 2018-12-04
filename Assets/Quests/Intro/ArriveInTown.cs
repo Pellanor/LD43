@@ -2,7 +2,7 @@
 using UnityEngine;
 
 internal class ArriveInTown : Quest {
-    private List<string> homes = new List<string> { "Calderon residence", "Wagner house", "Snyder's home" };
+    private List<string> homes = new List<string> { "Calderon residence", "Wagner house", "Snyder's home", "Underwood residence", "Griffin house", "Garrison's home", "Morton residence", "Bradshaw house", "Valentine's home" };
     private string leftBuilding;
     private string rightBuilding;
 
@@ -38,7 +38,7 @@ internal class ArriveInTown : Quest {
         return () => {
             World.Destroy(building);
             if (building != "Tavern") {
-                World.SetState("CAPTIVE_TAKEN");
+                World.SetState(World.State.CAPTIVE_TAKEN);
             }
         };
     }

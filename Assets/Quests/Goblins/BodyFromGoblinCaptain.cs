@@ -1,25 +1,41 @@
-﻿internal class BodyFromGoblinCaptain : DailyQuestCandidate {
+﻿using UnityEngine;
+
+internal class BodyFromGoblinCaptain : DailyQuestCandidate {
+
+    Player corpse;
+
+    public BodyFromGoblinCaptain() {
+        if (World.goblinCaptain.Corpses().Count > 0) {
+            corpse = World.goblinCaptain.Corpses()[Random.Range(0, World.goblinCaptain.Corpses().Count)];
+        }
+    }
+
     public bool IsAvailable() {
-        return false;
+        return corpse != null
+            && World.player.Knows(Player.Clue.AMULET)
+            && !World.player.IsState(Player.State.HAS_AMULET);
     }
 
     public bool IsPriority() {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public Option Left() {
-        throw new System.NotImplementedException();
+        return new Option("Have a Bath", () => World.goblinCaptain.RecoverCorpse(corpse));
     }
 
     public string QuestText() {
-        throw new System.NotImplementedException();
+        return "Search for the hero slain by the Goblin Captain";
     }
 
     public Option Right() {
-        throw new System.NotImplementedException();
+        if (World.IsBuilt("Tavern")) {
+            return new Option("Have a drink", () => World.goblinCaptain.RecoverCorpse(corpse));
+        }
+        return new Option("Try to sleep", () => World.goblinCaptain.RecoverCorpse(corpse));
     }
 
     public string Text() {
-        throw new System.NotImplementedException();
+        return "You find the last hereo's body in a shallow grave not far from the encampment. It's unpleasent work, but you're able to recover the amulet. Not wanting to risk losing it you return to town.";
     }
 }

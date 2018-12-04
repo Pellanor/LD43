@@ -2,13 +2,14 @@
 
 internal class EscortSupplies : DailyQuestCandidate {
     public bool IsAvailable() {
-        return !World.IsState("HAS_SUPPLIES");
+        return !World.IsState(World.State.HAS_SUPPLIES);
     }
 
     private Action Clue() {
         return () => {
-            World.SetState("HAS_SUPPLIES");
-            World.player.Learn("GOBBOWEED");
+            World.SetState(World.State.HAS_SUPPLIES);
+            World.player.Learn(Player.Clue.GOBBOWEED);
+            World.player.XpUp();
         };
     }
 

@@ -31,8 +31,9 @@ public class Main : MonoBehaviour {
         o.DoAction();
         if (o.Next() != null) {
             SetQuest(o.Next());
-        } else if (World.IsState("DEAD")) {
-            World.ClearState("DEAD");
+        } else if (World.IsState(World.State.DEAD)) {
+            World.player = new Player();
+            World.ClearState(World.State.DEAD);
             SetQuest(new Intro());
         } else {
             SetQuest(new DailyQuestPicker());

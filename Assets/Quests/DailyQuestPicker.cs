@@ -7,10 +7,11 @@ internal class DailyQuestPicker: Quest {
         new SearchForCaptive(),
         new GoblinHunting(),
         new FightGoblinCaptain(),
+        new FindRuins(),
         new PathToTheMountains(),
+        new ExploreMountains(),
         new TalkWithElder(),
         new BodyFromGoblinCaptain(),
-        new BodyFromGoblinAmbush(),
         new ReturnAmulet(),
         new ShowWeapon(),
         new DrinkInTavern(),
@@ -29,7 +30,7 @@ internal class DailyQuestPicker: Quest {
         List<DailyQuestCandidate> priority = available.Where(q => q.IsPriority()).ToList();
         DailyQuestCandidate lQuest;
         if (priority.Count > 0) {
-            lQuest = priority[Random.Range(0, available.Count)];
+            lQuest = priority[Random.Range(0, priority.Count)];
             priority.Remove(lQuest);
         } else {
             lQuest = available[Random.Range(0, available.Count)];
@@ -39,7 +40,7 @@ internal class DailyQuestPicker: Quest {
 
         DailyQuestCandidate rQuest;
         if (priority.Count > 0) {
-            rQuest = priority[Random.Range(0, available.Count)];
+            rQuest = priority[Random.Range(0, priority.Count)];
             priority.Remove(rQuest);
         } else {
             rQuest = available[Random.Range(0, available.Count)];

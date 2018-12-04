@@ -5,7 +5,7 @@ internal class AttackCamp : Quest {
     private Action Victory() {
         return () => {
             World.player.XpUp();
-            World.SetState("CAMP_CLEARED");
+            World.SetState(World.State.CAMP_CLEARED);
         };
     }
 

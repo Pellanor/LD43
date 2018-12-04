@@ -2,12 +2,12 @@
 
 internal class FindRuins : DailyQuestCandidate {
     public bool IsAvailable() {
-        return (World.IsState("CAMP_FOUND") || World.GoblinsSlain() >= 5)
-            && !World.IsState("RUINS_FOUND");
+        return (World.LocationOnMap(World.Location.GOBLIN_CAMP) || World.GoblinsSlain() >= 5)
+            && !World.LocationOnMap(World.Location.GOBLIN_RUINS);
     }
 
     private Action FoundRuins() {
-        return () => World.SetState("RUINS_FOUND");
+        return () => World.AddToMap(World.Location.GOBLIN_RUINS);
     }
 
     public bool IsPriority() {
