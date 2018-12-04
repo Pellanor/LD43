@@ -31,7 +31,7 @@ public class World {
     private static bool tavernDestroyed = false;
     private static int goblinsSlain = 0;
     public static Weapon goblinCaptainWeapon;
-    public static bool goblinGaptainSpawned = false;
+    public static bool goblinCaptainSpawned = false;
 
     private static HashSet<State> states = new HashSet<State>();
     private static HashSet<Location> map = new HashSet<Location>();
@@ -62,6 +62,12 @@ public class World {
     public static Weapon TakeWeaponFromElder(Weapon w) {
         eldersWeapons.Remove(w);
         return w;
+    }
+
+    public static bool CanSpawnWeapon() {
+        List<Weapon> possible = new List<Weapon>(weaponsNotYetProfecient);
+        possible.RemoveAll(weapon => player.CanUse(weapon));
+        return possible.Count > 0;
     }
 
     public static Weapon ChooseWeaponToSpawn() {
