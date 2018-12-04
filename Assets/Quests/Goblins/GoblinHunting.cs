@@ -4,17 +4,24 @@ using UnityEngine;
 
 internal class GoblinHunting : DailyQuestCandidate {
     public static readonly List<string> VictoryResponses = new List<string> {
-        "yay",
+        "Great Success",
         "Whoop Whoop",
         "Are there any more goblins?",
         "I'mma whoop some goblin ass.",
+        "I'm all outta bubble gum",
+        "Kicking ass and taking names",
+        "The world is a safer place",
         "Continue the Onslaught... Destroy. Them. All."
     };
 
     public static readonly List<string> DeathResponses = new List<string> {
         "Boo",
         "Omnia mors æquat",
-        "Death makes sad stories of us all"
+        "Death makes sad stories of us all",
+        "(╯°□°）╯︵ ┻━┻",
+        "ಥ_ಥ",
+        "I'll be bach",
+        "This isn't even my final form"
     };
 
     private List<GoblinScene> scenes = new List<GoblinScene> {
@@ -23,10 +30,10 @@ internal class GoblinHunting : DailyQuestCandidate {
             : "You feel a sharp pain in your back. You turn around to see a goblin with a bow. The strength leaves your legs and you fall to your knees as three others take aim and fire. You are slain.",
             World.player.Has(Player.Traits.OBSERVANT) ? SlayGoblins() : Death(),
             World.player.Has(Player.Traits.OBSERVANT) ? VictoryResponses : DeathResponses),
-         new GoblinScene("PLACEHOLD_GOBLIN_ENCOUNTER_1", SlayGoblins(), VictoryResponses),
-         new GoblinScene("PLACEHOLD_GOBLIN_ENCOUNTER_2", SlayGoblins(), VictoryResponses),
-         new GoblinScene("PLACEHOLD_GOBLIN_ENCOUNTER_3", SlayGoblins(), VictoryResponses),
-         new GoblinScene("PLACEHOLD_GOBLIN_ENCOUNTER_4", SlayGoblins(), VictoryResponses)
+         new GoblinScene("You find some goblins and give chase. A particularily rotund one is unable to keep up with the pack. Time to thin the herd.", SlayGoblins(), VictoryResponses),
+         new GoblinScene("A band of goblins are heading towards town. You circle back and set an ambush. They never stood a chance.", SlayGoblins(), VictoryResponses),
+         new GoblinScene("Some goblins have slain a deer and are doing an adequete job of roasting it over a fire. You releave them of their food and their lives.", SlayGoblins(), VictoryResponses),
+         new GoblinScene("You patiently stalk a lone goblin until he leads you to his companions. The more the merrier.", SlayGoblins(), VictoryResponses)
     };
 
     private static System.Action SlayGoblins() {

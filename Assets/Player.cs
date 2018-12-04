@@ -20,6 +20,8 @@ public class Player {
     public enum Clue { AMULET, AMULET_IN_ACTION, AMULET_DETAILS, ELDER_STUFF, ELDER_STUFF_STUDIED, ELDER_HOME, KNICK_OF_TIME, GOBBOWEED, ARCANE_RUNE, ELDER_WEAPON }
     private int xp = 0;
     public World.Weapon CurrentWeapon { get; set; }
+    public bool WeaponSet = false;
+    public bool FirstDayInVillage = true;
 
     HashSet<Clue> clues = new HashSet<Clue>();
     HashSet<Traits> traits = new HashSet<Traits>();

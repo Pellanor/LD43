@@ -8,11 +8,17 @@
     }
 
     public Option Left() {
-        return new Option("Yo", null);
+        if (World.player.Has(Player.Traits.GOBLIN_SLAYER)) {
+            return new Option("You got any more of those goblins to slay?");
+        }
+        return new Option("Happy to help");
     }
 
     public Option Right() {
-        return new Option("Up Dog.", null);
+        if (World.player.Has(Player.Traits.GOBLIN_SLAYER)) {
+            return new Option("I did it for the joy of the slaughter");
+        }
+        return new Option("It's what anybody would have done");
     }
 
     public string Text() {

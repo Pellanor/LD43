@@ -42,7 +42,7 @@ public class World {
     public static CorpseLocation goblinCaptain = new CorpseLocation();
     public static CorpseLocation mountains = new CorpseLocation();
     public static int deathCount = 0;
-    public static int elderPower = 3;
+    public static int elderPower = 5;
 
     private static List<Weapon> eldersWeapons = new List<Weapon>();
 

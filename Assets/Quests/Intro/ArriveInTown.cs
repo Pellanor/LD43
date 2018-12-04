@@ -40,6 +40,7 @@ internal class ArriveInTown : Quest {
             if (building != "Tavern") {
                 World.SetState(World.State.CAPTIVE_TAKEN);
             }
+            World.player.XpUp();
         };
     }
 

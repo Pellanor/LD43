@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExtensionMethods;
+using System;
 
 internal class ShowWeapon : DailyQuestCandidate {
 
@@ -27,7 +28,7 @@ internal class ShowWeapon : DailyQuestCandidate {
     }
 
     public Option Left() {
-        return new Option("PLACEHOLDER", GiveWeapon());
+        return new Option("Maybe that will keep him out of my hair", GiveWeapon());
     }
 
     public string QuestText() {
@@ -35,10 +36,10 @@ internal class ShowWeapon : DailyQuestCandidate {
     }
 
     public Option Right() {
-        return new Option("PLACEHOLDER", GiveWeapon());
+        return new Option("I better ge tthat back!", GiveWeapon());
     }
 
     public string Text() {
-        return "The elder approaches you, curious to see the weapon that you found. He studies artifacts such as this in his free time. Since you're not profcecient with the [weapon] anyway, you let him hang on to it for the time being.";
+        return "The elder approaches you, curious to see the weapon that you found. He studies artifacts such as this in his free time. Since you're not profcecient with the " + weapon.GetDescription() + " anyway, you let him hang on to it for the time being.";
     }
 }

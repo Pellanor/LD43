@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ExtensionMethods;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 public class Main : MonoBehaviour {
 
     public Text questText;
+    public Text level;
+    public Text weapon;
     public Button swipeRight;
     public Button swipeLeft;
     public Quest currentQuest;
@@ -29,6 +32,7 @@ public class Main : MonoBehaviour {
 
     private void DoOption(Option o) {
         o.DoAction();
+
         if (o.Next() != null) {
             SetQuest(o.Next());
         } else if (World.IsState(World.State.DEAD)) {
@@ -37,6 +41,12 @@ public class Main : MonoBehaviour {
             SetQuest(new Intro());
         } else {
             SetQuest(new DailyQuestPicker());
+        }
+        level.text = "Level " + World.player.Xp();
+        if (World.player.WeaponSet) {
+            weapon.text = World.player.CurrentWeapon.GetDescription();
+        } else {
+            weapon.text = "Unarmed";
         }
     }
 
